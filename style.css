@@ -1,3 +1,4 @@
+
 /* --- General Styles --- */
 body {
     font-family: 'Poppins', sans-serif;
@@ -76,12 +77,12 @@ body {
     display: none;
     width: 100%;
     height: 100vh;
-    flex-direction: column; /* Changed for mobile-first */
+    flex-direction: column; /* Mobile-first: stack sidebar and content */
 }
 
 .sidebar {
-    width: 100%; /* Changed for mobile */
-    height: auto; /* Changed for mobile */
+    width: 100%; 
+    height: auto;
     background-color: #003A3E;
     color: #fff;
     padding: 0 15px;
@@ -107,9 +108,9 @@ body {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex; /* Changed for mobile */
-    overflow-x: auto; /* Allow horizontal scrolling on mobile */
-    white-space: nowrap; /* Prevent wrapping of menu items */
+    display: flex; /* Mobile: Horizontal scrollable menu */
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .sidebar li a {
@@ -136,7 +137,7 @@ body {
     flex-grow: 1;
     padding: 20px;
     background-color: #FEF3E0;
-    overflow-y: auto;
+    overflow-y: auto; /* Allows content to scroll */
 }
 
 .page {
@@ -160,18 +161,23 @@ body {
 }
 
 #add-stock-form, #stock-in-form, #add-to-order-form {
+    display: flex;
     flex-direction: column;
     align-items: stretch;
     width: 100%;
+    gap: 15px;
 }
 
-#add-stock-form input, #category-filter, #stock-in-form input, #stock-in-form select, #add-to-order-form select, #add-to-order-form input {
+#add-stock-form input, #category-filter, #stock-in-form input, #stock-in-form select, #add-to-order-form select, #add-to-order-form input, #add-stock-form button, #stock-in-form button, #add-to-order-btn, #submit-order-btn {
     width: 100%;
     box-sizing: border-box;
+    font-size: 16px;
+    padding: 12px;
 }
 
 #excel-file {
     width: 100%;
+    margin-top: 10px;
 }
 
 .grid-form {
@@ -180,7 +186,12 @@ body {
     gap: 20px;
 }
 
-/* --- Responsive Table Wrapper --- */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* This is the key for responsive tables */
 .table-wrapper {
     overflow-x: auto;
     margin-top: 20px;
@@ -189,7 +200,7 @@ body {
 #stock-table, #stock-in-history-table, #current-order-table, #order-history-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 600px; /* Force scroll on small screens */
+    min-width: 700px; /* Forces horizontal scroll on small screens */
 }
 
 #stock-table th, #stock-table td, #stock-in-history-table th, #stock-in-history-table td, #current-order-table th, #current-order-table td, #order-history-table th, #order-history-table td {
@@ -205,6 +216,8 @@ body {
     font-weight: 600;
     color: #333;
     font-size: 15px;
+    position: sticky;
+    top: 0;
 }
 
 .low-stock {
@@ -224,10 +237,11 @@ body {
     left: auto;
 }
 
-/* --- Media Query for Desktop --- */
+/* --- Media Query for DESKTOP styles --- */
+/* This code runs only on screens wider than 768px */
 @media (min-width: 768px) {
     .dashboard-container {
-        flex-direction: row; /* Back to row for desktop */
+        flex-direction: row; /* Sidebar and content side-by-side */
     }
 
     .sidebar {
@@ -238,7 +252,7 @@ body {
     }
 
     .sidebar ul {
-        flex-direction: column; /* Back to vertical for desktop */
+        flex-direction: column; /* Vertical menu on desktop */
         overflow-x: hidden;
     }
      .sidebar li a {
@@ -259,13 +273,14 @@ body {
         justify-content: space-between;
         align-items: center;
     }
-
+    
     #add-stock-form {
         flex-direction: row;
         width: auto;
+        gap: 15px;
     }
 
     .grid-form {
-        grid-template-columns: 1fr 1fr; /* Two columns for desktop */
+        grid-template-columns: 1fr 1fr; /* Two columns on desktop */
     }
 }
