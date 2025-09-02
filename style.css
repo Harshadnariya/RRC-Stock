@@ -1,75 +1,62 @@
-
 /* --- General Styles --- */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    background-color: #f0f2f5;
+    background-color: #f4f7fc;
     color: #333;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-.container {
+/* --- Login Page --- */
+.login-container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    height: 100%;
 }
 
-/* --- Login Page --- */
-.login-container {
+.login-form {
     background-color: #fff;
-    padding: 60px 50px;
-    border-radius: 15px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 90%;
+    width: 100%;
     max-width: 400px;
-    box-sizing: border-box;
-    transition: all 0.3s ease;
 }
 
-.login-container h2 {
-    margin-bottom: 40px;
-    color: #003A3E;
-    font-weight: 700;
-    font-size: 32px;
+.login-form h2 {
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: 600;
 }
 
-.login-container input {
+.login-form input {
     width: 100%;
     padding: 15px;
-    margin-bottom: 25px;
-    border: 1px solid #dfe6e9;
-    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
     font-size: 16px;
     box-sizing: border-box;
-    transition: all 0.3s;
 }
 
-
-.login-container input:focus {
-    outline: none;
-    border-color: #003A3E;
-    box-shadow: 0 0 8px rgba(0, 58, 62, 0.2);
-}
-
-.login-container button {
+.login-form button {
     width: 100%;
     padding: 15px;
-    background: #003A3E;
+    background: #007bff;
     color: #fff;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
-    transition: all 0.3s;
+    transition: background-color 0.3s;
 }
 
-.login-container button:hover {
-    background: #005056;
+.login-form button:hover {
+    background: #0056b3;
 }
 
 /* --- Dashboard --- */
@@ -77,67 +64,63 @@ body {
     display: none;
     width: 100%;
     height: 100vh;
-    flex-direction: column; /* Mobile-first: stack sidebar and content */
+    flex-direction: row;
 }
 
 .sidebar {
-    width: 100%; 
-    height: auto;
-    background-color: #003A3E;
-    color: #fff;
-    padding: 0 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    background-color: #fff;
+    color: #333;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
 }
 
 .sidebar .logo {
     text-align: center;
-    padding: 20px 0;
-    border-bottom: 1px solid #005056;
-    margin-bottom: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
 }
 
 .sidebar .logo h2 {
     margin: 0;
     font-size: 24px;
+    color: #007bff;
 }
 
 .sidebar ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex; /* Mobile: Horizontal scrollable menu */
-    overflow-x: auto;
-    white-space: nowrap;
 }
 
 .sidebar li a {
     display: flex;
     align-items: center;
-    color: #ecf0f1;
+    color: #555;
     text-decoration: none;
     padding: 15px;
-    margin-bottom: 0;
-    border-radius: 8px;
-    font-size: 14px;
-    transition: background-color 0.3s;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .sidebar li.active a, .sidebar li a:hover {
-    background-color: #005056;
+    background-color: #007bff;
+    color: #fff;
 }
 
 .sidebar li a i {
-    margin-right: 8px;
+    margin-right: 10px;
 }
 
 .main-content {
     flex-grow: 1;
-    padding: 20px;
-    background-color: #FEF3E0;
-    overflow-y: auto; /* Allows content to scroll */
+    padding: 40px;
+    background-color: #f4f7fc;
+    overflow-y: auto;
 }
 
 .page {
@@ -146,43 +129,16 @@ body {
 
 .card {
     background-color: #fff;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     margin-bottom: 30px;
 }
 
-/* --- Forms (Mobile First) --- */
-.add-product-section, .filter-section {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 15px;
-    gap: 15px;
-}
-
-#add-stock-form, #stock-in-form, #add-to-order-form {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    gap: 15px;
-}
-
-#add-stock-form input, #category-filter, #stock-in-form input, #stock-in-form select, #add-to-order-form select, #add-to-order-form input, #add-stock-form button, #stock-in-form button, #add-to-order-btn, #submit-order-btn {
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 16px;
-    padding: 12px;
-}
-
-#excel-file {
-    width: 100%;
-    margin-top: 10px;
-}
-
-.grid-form {
+/* --- Forms --- */
+.form-grid {
     display: grid;
-    grid-template-columns: 1fr; /* Single column for mobile */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
 }
 
@@ -191,96 +147,68 @@ body {
     flex-direction: column;
 }
 
-/* This is the key for responsive tables */
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.form-group input, .form-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* --- Tables --- */
 .table-wrapper {
     overflow-x: auto;
     margin-top: 20px;
 }
 
-#stock-table, #stock-in-history-table, #current-order-table, #order-history-table {
+table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 700px; /* Forces horizontal scroll on small screens */
 }
 
-#stock-table th, #stock-table td, #stock-in-history-table th, #stock-in-history-table td, #current-order-table th, #current-order-table td, #order-history-table th, #order-history-table td {
-    border-bottom: 1px solid #dfe6e9;
-    padding: 12px 10px;
+th, td {
+    padding: 15px;
     text-align: left;
-    vertical-align: middle;
-    font-size: 14px;
+    border-bottom: 1px solid #eee;
 }
 
-#stock-table thead th, #stock-in-history-table thead th, #current-order-table thead th, #order-history-table thead th {
-    background-color: #f2f2f2;
+thead th {
+    background-color: #f9f9f9;
     font-weight: 600;
-    color: #333;
-    font-size: 15px;
-    position: sticky;
-    top: 0;
+}
+
+tbody tr:hover {
+    background-color: #f4f7fc;
+}
+
+/* --- Actions --- */
+.actions-cell .btn {
+    margin-right: 5px;
 }
 
 .low-stock {
-    background-color: #f8d7da !important;
-    color: #721c24;
-}
-
-/* --- Action Buttons & Dropdown --- */
-.actions-cell {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.dropdown-menu {
-    right: 0;
-    left: auto;
-}
-
-/* --- Media Query for DESKTOP styles --- */
-/* This code runs only on screens wider than 768px */
-@media (min-width: 768px) {
-    .dashboard-container {
-        flex-direction: row; /* Sidebar and content side-by-side */
-    }
-
-    .sidebar {
-        width: 280px;
-        height: 100vh;
-        padding: 0 30px;
-        flex-direction: column;
-    }
-
-    .sidebar ul {
-        flex-direction: column; /* Vertical menu on desktop */
-        overflow-x: hidden;
-    }
-     .sidebar li a {
-        padding: 20px;
-        font-size: 16px;
-    }
-
-    .main-content {
-        padding: 60px;
-    }
-
-    .card {
-        padding: 40px 50px;
-    }
-
-    .add-product-section {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    #add-stock-form {
-        flex-direction: row;
-        width: auto;
-        gap: 15px;
-    }
-
-    .grid-form {
-        grid-template-columns: 1fr 1fr; /* Two columns on desktop */
-    }
+    background-color: #fff2f2;
 }
