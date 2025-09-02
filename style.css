@@ -1,11 +1,15 @@
 
 :root {
-    --primary-color: #007bff;
-    --primary-hover-color: #0056b3;
+    --primary-color: #003A3E;
+    --primary-hover-color: #005056;
     --danger-color: #dc3545;
     --danger-hover-color: #c82333;
     --background-color: #f8f9fa;
     --card-background-color: #ffffff;
+    --sidebar-background-color: #003A3E;
+    --sidebar-text-color: #f8f9fa;
+    --sidebar-link-hover-color: #005056;
+    --sidebar-link-active-color: #005056;
     --text-color: #212529;
     --text-muted-color: #6c757d;
     --border-color: #dee2e6;
@@ -30,13 +34,14 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background-color: var(--primary-color);
 }
 
 #login-form {
     background-color: var(--card-background-color);
     padding: 2.5rem;
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     text-align: center;
     width: 100%;
     max-width: 400px;
@@ -46,6 +51,7 @@ body {
 #login-form h2 {
     margin-bottom: 2rem;
     font-weight: 600;
+    color: var(--primary-color);
 }
 
 #login-form input {
@@ -68,7 +74,7 @@ body {
 
 .sidebar {
     width: 260px;
-    background-color: var(--card-background-color);
+    background-color: var(--sidebar-background-color);
     padding: 1.5rem;
     box-shadow: var(--shadow);
     display: flex;
@@ -79,14 +85,14 @@ body {
 .sidebar .logo {
     text-align: center;
     padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--primary-hover-color);
     margin-bottom: 1.5rem;
 }
 
 .sidebar .logo h2 {
     margin: 0;
     font-size: 1.5rem;
-    color: var(--primary-color);
+    color: var(--card-background-color);
     font-weight: 700;
 }
 
@@ -99,7 +105,7 @@ body {
 .sidebar li a {
     display: flex;
     align-items: center;
-    color: var(--text-muted-color);
+    color: var(--sidebar-text-color);
     text-decoration: none;
     padding: 0.9rem 1.2rem;
     border-radius: var(--border-radius);
@@ -109,9 +115,15 @@ body {
     transition: background-color 0.2s, color 0.2s;
 }
 
-.sidebar li.active a, .sidebar li a:hover {
-    background-color: var(--primary-color);
+.sidebar li a:hover {
+    background-color: var(--sidebar-link-hover-color);
     color: var(--card-background-color);
+}
+
+.sidebar li.active a {
+    background-color: var(--sidebar-link-active-color);
+    color: var(--card-background-color);
+    font-weight: 600;
 }
 
 .sidebar li a i {
@@ -174,7 +186,9 @@ h3 {
     font-size: 0.9rem;
 }
 
-.form-group input, .form-group select, .form-group textarea {
+.form-group input,
+.form-group select,
+.form-group textarea {
     padding: 0.75rem;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
@@ -242,7 +256,8 @@ table {
     min-width: 800px;
 }
 
-th, td {
+th,
+td {
     padding: 1rem 1.25rem;
     text-align: left;
     border-bottom: 1px solid var(--border-color);
@@ -258,7 +273,7 @@ thead th {
 }
 
 tbody tr:nth-child(even) {
-    background-color: #f8f9fa;
+    background-color: #fdfdfd;
 }
 
 tbody tr:hover {
