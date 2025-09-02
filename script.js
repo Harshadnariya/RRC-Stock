@@ -32,6 +32,29 @@ document.addEventListener('DOMContentLoaded', () => {
     let stockInIdCounter = 1;
     let orderIdCounter = 1;
 
+    function saveData() {
+        localStorage.setItem('stockData', JSON.stringify(stockData));
+        localStorage.setItem('stockInHistory', JSON.stringify(stockInHistory));
+        localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
+        localStorage.setItem('refCounter', refCounter);
+        localStorage.setItem('stockInIdCounter', stockInIdCounter);
+        localStorage.setItem('orderIdCounter', orderIdCounter);
+    }
+
+    function loadData() {
+        stockData = JSON.parse(localStorage.getItem('stockData')) || [];
+        stockInHistory = JSON.parse(localStorage.getItem('stockInHistory')) || [];
+        orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
+        refCounter = parseInt(localStorage.getItem('refCounter')) || 1;
+        stockInIdCounter = parseInt(localStorage.getItem('stockInIdCounter')) || 1;
+        orderIdCounter = parseInt(localStorage.getItem('orderIdCounter')) || 1;
+
+        renderStockTable();
+        renderStockInHistory();
+        renderOrderHistory();
+        updateCategoryFilter();
+    }
+
     if (sidebarLinks.length > 0) {
         sidebarLinks[0].parentElement.classList.add('active');
     }
@@ -45,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loginContainer.style.display = 'none';
             dashboardContainer.style.display = 'flex';
             pages[0].style.display = 'block';
+            loadData();
         } else {
             alert('Invalid username or password');
         }
@@ -101,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
             stockOut: 0,
         };
         stockData.push(newProduct);
+        saveData();
         renderStockTable();
         updateCategoryFilter();
         addStockForm.reset();
@@ -118,6 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (product) {
                 product.stockIn += quantity;
                 addStockInToHistory(supplierName, productName, quantity);
+                saveData();
                 renderStockTable();
                 stockInForm.reset();
             } else {
@@ -169,6 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         currentOrder = [];
+        saveData();
         renderCurrentOrder();
         renderStockTable();
         renderOrderHistory();
@@ -200,6 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        saveData();
         renderStockTable();
         updateCategoryFilter();
     }
@@ -257,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hours = hours % 12;
         hours = hours ? hours : 12; // the hour '0' should be '12'
         minutes = minutes < 10 ? '0' + minutes : minutes;
-        return `${date.toLocaleDateString()} ${hours}:${minutes} ${ampm}`;
+        return `${new Date(date).toLocaleDateString()} ${hours}:${minutes} ${ampm}`;
     }
 
     function setOrderDate() {
@@ -273,6 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
             quantity: quantity
         };
         stockInHistory.push(newStockIn);
+        saveData();
         renderStockInHistory();
     }
 
@@ -309,6 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             stockInHistory.splice(stockInIndex, 1);
+            saveData();
             renderStockTable();
             renderStockInHistory();
         }
@@ -386,6 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
             orderHistory.splice(orderIndex, 1);
+            saveData();
             renderStockTable();
             renderOrderHistory();
         }
@@ -419,6 +450,7 @@ document.addEventListener('DOMContentLoaded', () => {
             product.name = newName;
             product.category = cells[1].textContent;
             product.initialStock = parseInt(cells[3].textContent);
+            saveData();
             renderStockTable();
             updateCategoryFilter();
         }
@@ -427,6 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function deleteRow(refNo) {
         if (confirm('Are you sure you want to delete this stock item?')) {
             stockData = stockData.filter(p => p.refNo !== refNo);
+            saveData();
             renderStockTable();
             updateCategoryFilter();
         }
@@ -486,4 +519,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    loadData();
 });
