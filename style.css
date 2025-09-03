@@ -2,6 +2,8 @@
 :root {
     --primary-color: #4A90E2; /* A professional blue */
     --primary-hover-color: #357ABD;
+    --secondary-color: #F5F7FA; /* Light background for secondary elements */
+    --secondary-hover-color: #EAECEF;
     --danger-color: #D0021B; /* A strong red for warnings */
     --danger-hover-color: #B0021B;
     --background-color: #F5F7FA; /* A light, clean background */
@@ -79,10 +81,14 @@ body {
     width: 280px;
     background-color: var(--card-background-color);
     padding: 2rem;
-    box-shadow: var(--shadow);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
     z-index: 10;
+}
+
+.sidebar .logo a {
+    text-decoration: none;
 }
 
 .sidebar .logo {
@@ -154,10 +160,28 @@ body {
     margin-bottom: 2.5rem;
 }
 
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.filter-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+
 h2 {
     font-weight: 700;
-    margin-top: 0;
-    margin-bottom: 2rem;
+    margin: 0;
     font-size: 1.6rem;
 }
 
@@ -243,6 +267,18 @@ h3 {
     background-color: var(--primary-hover-color);
 }
 
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-hover-color);
+    border-color: #D6D6D6;
+}
+
+
 .btn-danger {
     background-color: var(--danger-color);
     color: var(--card-background-color);
@@ -250,6 +286,10 @@ h3 {
 
 .btn-danger:hover {
     background-color: var(--danger-hover-color);
+}
+
+.btn-full-width {
+    width: 100%;
 }
 
 .btn-icon {
